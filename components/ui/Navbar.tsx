@@ -4,7 +4,7 @@ import { useAppDispatch, useAppSelector } from "@/store/hook";
 import { selectAuthLoading, selectIsAuthenticated, selectUser } from "@/store/selectors";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
-import { LayoutDashboard, LogOut, ShoppingCartIcon, User } from 'lucide-react'
+import { LayoutDashboard, LogOut, User } from 'lucide-react'
 import { clearUser } from "@/store/slices/authSlice";
 import { clearCart } from "@/store/slices/cartSlice";
 import MiniCart from "../cart/MiniCart";

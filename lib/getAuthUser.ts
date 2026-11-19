@@ -1,5 +1,5 @@
 import { TPermission, Tuser } from "@/types";
-import { NextRequest, NextResponse } from "next/server";
+import { NextRequest } from "next/server";
 import { hasPermission, verifyToken } from "./auth";
 import { connectDB } from "./db";
 import User from "@/models/User.model";

@@ -17,7 +17,7 @@ export const loginSchema = z.object({
 })
 
 export const addressSchema = z.object({
-    label: z.string().min(1, "Label is required").default("Home"),
+    label: z.string().min(1, "Label is required"),
     street: z.string().min(3, "Street address is required"),
     city: z.string().min(2, "City is required"),
     state: z.string().min(2, "State is required"),
@@ -26,4 +26,5 @@ export const addressSchema = z.object({
 
 export type TRegisterInput = z.infer<typeof registerSchema>
 export type TLoginInput = z.infer<typeof loginSchema>
-export type TaddressInput = z.infer<typeof addressSchema>
+export type TAddressInput = z.infer<typeof addressSchema>
+export type TaddressInput = TAddressInput

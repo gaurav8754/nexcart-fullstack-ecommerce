@@ -8,7 +8,7 @@ export default function Footer() {
 
                 <div className="footer-brand">
                     <h3>ShopMart</h3>
-                    <p>India's best online shopping destination</p>
+                    <p>India&apos;s best online shopping destination</p>
                 </div>
 
                 <div className="footer-links">

@@ -11,11 +11,17 @@ import Image from "next/image"
 import { useRouter } from "next/navigation"
 import { useEffect, useState } from "react"
 
+declare global {
+    interface Window {
+        Razorpay: new (options: Record<string, unknown>) => { open: () => void }
+    }
+}
+
 export default function CheckoutPage() {
 
     const router = useRouter()
     const dispatch = useAppDispatch()
-    const { items, totalPrice, totalCount, increment, decrement, remove, isEmpty } = useCart()
+    const { items, totalPrice, totalCount, isEmpty } = useCart()
 
     const [addressLoading, setAddressLoading] = useState<boolean>(false)
     const [selectedAddressId, setSelectedAddressId] = useState<string>('')
@@ -101,7 +107,7 @@ export default function CheckoutPage() {
                         }
                     }
                 }
-                const rzp = new (window as any).Razorpay(options)
+                const rzp = new window.Razorpay(options)
                 rzp.open()
             } else {
                 router.push(`/orders/${data.order._id}`)

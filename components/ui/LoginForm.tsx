@@ -1,6 +1,6 @@
 'use client'
 
-import { loginSchema, registerSchema, TLoginInput, TRegisterInput } from "@/lib/validations"
+import { loginSchema, TLoginInput } from "@/lib/validations"
 import { useRouter, useSearchParams } from "next/navigation"
 import { useState } from "react"
 import { useForm } from 'react-hook-form'

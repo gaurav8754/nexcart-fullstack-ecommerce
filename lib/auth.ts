@@ -1,6 +1,6 @@
 import Jwt from "jsonwebtoken";
 import bcrypt from 'bcryptjs'
-import { TJwtPayload } from "@/types";
+import { TJwtPayload, TPermission } from "@/types";
 
 
 
@@ -48,7 +48,7 @@ export function hasPermission(user: TJwtPayload, permission: string): boolean {
 
     if (user.role == 'superadmin') return true;
 
-    return user.permissions.includes(permission as any)
+    return user.permissions.includes(permission as TPermission)
 }
 
 

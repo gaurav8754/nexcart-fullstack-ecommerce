@@ -61,8 +61,9 @@ export async function POST(request: NextRequest) {
 
         return response
 
-    } catch (error: any) {
+    } catch (error) {
         console.log(error)
-        return NextResponse.json({ message: "Internal Server Error", error: error.message }, { status: 500 })
+        const message = error instanceof Error ? error.message : "Internal Server Error"
+        return NextResponse.json({ message: "Internal Server Error", error: message }, { status: 500 })
     }
 }

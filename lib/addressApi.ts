@@ -7,7 +7,7 @@ export async function fetchAddresses(): Promise<TAddress[]> {
     return data.addresses
 }
 
-export async function addAddressApi(address: Omit<TAddress, "_id">): Promise<TAddress[]> {
+export async function addAddressApi(address: Omit<TAddress, "_id" | "isDefault"> & { isDefault?: boolean }): Promise<TAddress[]> {
     const res = await fetch("/api/addresses", {
         method: "POST",
         headers: { "Content-Type": "application/json" },

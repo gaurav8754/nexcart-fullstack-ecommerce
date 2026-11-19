@@ -10,7 +10,7 @@ export async function GET(request: NextRequest) {
         const user = await getAuthUser(request)
         await connectDB()
 
-        const dbUser = await User.findById(user?.id).select('addresses').lean()
+        const dbUser = await User.findById(user._id).select('addresses').lean()
 
         return NextResponse.json({ addresses: dbUser?.addresses }, { status: 200 })
 

@@ -2,6 +2,7 @@
 
 import { addAddressApi, fetchAddresses, updateAddressApi, deleteAddressApi } from "@/lib/addressApi"
 import { TAddress } from "@/types"
+import { TAddressInput } from "@/lib/validations"
 import { MapPin, Plus, Trash2, Loader2 } from "lucide-react"
 import { useEffect, useState } from "react"
 import AddressForm from "./AddressForm"

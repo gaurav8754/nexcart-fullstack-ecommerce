@@ -64,7 +64,8 @@ export default function ActiveFilters() {
 
         const params = new URLSearchParams(searchParams.toString())
 
-        keys.forEach(k => params.delete(k))
+        const keysArray = Array.isArray(keys) ? keys : [keys]
+        keysArray.forEach((k: string) => params.delete(k))
         params.delete('page')
 
         router.push(`${pathname}?${params.toString()}`)

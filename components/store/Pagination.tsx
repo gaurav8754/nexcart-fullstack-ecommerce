@@ -9,9 +9,10 @@ type TProps = {
     pagination: TPagination
 }
 
-export default function Pagination({ pagination }) {
+export default function Pagination({ pagination }: TProps) {
 
-    const { page, totalPage, hasNextPage, hasPrevPage } = pagination
+    const { page, hasNextPage, hasPrevPage } = pagination
+    const totalPage = pagination.totalPage ?? pagination.totalPages ?? 1
     const router = useRouter()
     const pathname = usePathname()
     const searchParams = useSearchParams()
@@ -26,7 +27,7 @@ export default function Pagination({ pagination }) {
     }
 
     if (totalPage <= 1) return null
-    let pageNumbers: number[] = [];
+    const pageNumbers: number[] = [];
 
     for (let i = 1; i <= totalPage; i++) {
         pageNumbers.push(i)

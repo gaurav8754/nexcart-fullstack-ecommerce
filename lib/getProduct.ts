@@ -3,7 +3,7 @@ import { TProduct } from "@/types";
 
 
 
-export async function getProduct(slug: string) {
+export async function getProduct(slug: string): Promise<TProduct | null> {
     const baseUrl = process.env.NEXT_PUBLIC_API_URL || "http://localhost:3000";
 
     const url = `${baseUrl}/api/products/${slug}`;

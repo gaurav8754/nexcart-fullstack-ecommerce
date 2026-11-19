@@ -5,7 +5,7 @@ import Link from "next/link"
 import Image from "next/image"
 import { Package, Loader2, ChevronRight } from "lucide-react"
 import { TOrder } from "@/types"
-import { getOrderStatusStyle, getPaymentStatusStyle } from "@/lib/orderStatus"
+import { getOrderStatusStyle } from "@/lib/orderStatus"
 
 export default function OrdersPage() {
 

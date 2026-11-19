@@ -1,5 +1,3 @@
-import Product from "@/models/Product.model";
-
 export type TProduct = {
     _id: string
     name: string
@@ -28,7 +26,8 @@ export type TPagination = {
     page: number
     limit: number
     totalCount: number
-    totalPages: number
+    totalPages?: number
+    totalPage?: number
     hasNextPage: boolean
     hasPrevPage: boolean
 }

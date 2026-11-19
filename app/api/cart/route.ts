@@ -62,7 +62,7 @@ export async function POST(request: NextRequest) {
             cart = await Cart.create({ user: user._id, items: [] })
         }
 
-        const existingItem = cart.items.find((item) => item.product.toString() === productId)
+        const existingItem = cart.items.find((item: { product: { toString(): string } }) => item.product.toString() === productId)
 
         if (existingItem) {
             existingItem.quantity = Math.min(existingItem.quantity + quantity, product.stock)

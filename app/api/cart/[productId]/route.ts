@@ -44,7 +44,7 @@ export async function PATCH(request: NextRequest, { params }: TParams) {
             return NextResponse.json({ message: "Cart not found" }, { status: 404 })
         }
 
-        let item = cart.items.find((item) => item.product.toString() === productId)
+        const item = cart.items.find((item: { product: { toString(): string } }) => item.product.toString() === productId)
 
         if (!item) {
             return NextResponse.json({ message: "Item not found" }, { status: 404 })
@@ -83,7 +83,7 @@ export async function DELETE(request: NextRequest, { params }: TParams) {
             return NextResponse.json({ message: "Cart not found" }, { status: 404 })
         }
 
-        cart.items = cart.items.filter((item) => item.product.toString() !== productId)
+        cart.items = cart.items.filter((item: { product: { toString(): string } }) => item.product.toString() !== productId)
 
         await cart.save()
 

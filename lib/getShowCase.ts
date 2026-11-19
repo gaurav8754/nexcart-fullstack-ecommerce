@@ -1,6 +1,6 @@
 
 
-import { TProduct, TShowcaseResponse } from "@/types";
+import { TShowcaseResponse } from "@/types";
 
 
 
@@ -15,7 +15,7 @@ export async function getShowcaseProducts(): Promise<TShowcaseResponse> {
     });
 
     if (response.status === 404) {
-        return null
+        return { featured: [], newArrivals: [], topRated: [], deals: [] }
     }
 
     if (!response.ok) {

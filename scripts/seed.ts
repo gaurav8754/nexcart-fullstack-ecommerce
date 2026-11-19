@@ -749,7 +749,11 @@ const products = [
 
 async function seed() {
     try {
-        await mongoose.connect(process.env.MONGO_URI!)
+        if (!process.env.MONGO_URI) {
+            console.error("Error: MONGO_URI is missing in .env.local")
+            process.exit(1)
+        }
+        await mongoose.connect(process.env.MONGO_URI)
         console.log("Mongodb connected")
 
         await Product.deleteMany()

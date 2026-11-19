@@ -68,6 +68,7 @@ export function useCart() {
         totalCount,
         totalPrice,
         updatingId,
+        isLoading: loading,
         isEmpty: items.length === 0,
         increment,
         decrement,

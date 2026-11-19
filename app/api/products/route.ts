@@ -8,7 +8,7 @@ export async function GET(request: NextRequest) {
 
     try {
 
-        connectDB();
+        await connectDB();
 
         const { searchParams } = request.nextUrl
 
@@ -24,7 +24,7 @@ export async function GET(request: NextRequest) {
         const limit = parseInt(searchParams.get('limit') || '12', 10);
         const sort = searchParams.get('sort') || 'createdAt';
 
-        const filter: Record<string, any> = {
+        const filter: Record<string, unknown> = {
             isActive: true
         }
 
@@ -41,13 +41,14 @@ export async function GET(request: NextRequest) {
         }
 
         if (Number(minPrice) > 0 || Number(maxPrice) > 0) {
-            filter.price = {}
+            const priceFilter: Record<string, number> = {}
             if (Number(minPrice) > 0) {
-                filter.price.$gte = Number(minPrice)
+                priceFilter.$gte = Number(minPrice)
             }
             if (Number(maxPrice) > 0) {
-                filter.price.$lte = Number(maxPrice)
+                priceFilter.$lte = Number(maxPrice)
             }
+            filter.price = priceFilter
         }
 
         if (Number(rating) > 0) {
@@ -139,7 +140,8 @@ export async function GET(request: NextRequest) {
 
 
     } catch (err) {
-
+        console.error("Error fetching products:", err)
+        return Response.json({ success: false, message: "Internal server error" }, { status: 500 })
     }
 
 }

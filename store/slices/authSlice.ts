@@ -3,7 +3,13 @@ import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 
 
 
-const initialState = {
+type TAuthState = {
+    user: Tuser | null
+    isLoading: boolean
+    isAuthenticaed: boolean
+}
+
+const initialState: TAuthState = {
     user: null,
     isLoading: false,
     isAuthenticaed: false
@@ -15,7 +21,7 @@ const authSlice = createSlice({
     initialState,
     reducers: {
 
-        setUser: (state, action: PayloadAction<any | Tuser>) => {
+        setUser: (state, action: PayloadAction<Tuser>) => {
             state.user = action.payload;
             state.isAuthenticaed = true;
             state.isLoading = false
